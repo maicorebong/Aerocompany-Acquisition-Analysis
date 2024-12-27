@@ -1,4 +1,4 @@
--- Yearly Inventory Sufficiency Analysis with existing inventory_status
+-- Inventory Sufficiency and Action Needed
 
 CREATE TABLE yearly_inventory_sufficiency_action AS
 SELECT 
