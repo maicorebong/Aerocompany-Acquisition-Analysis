@@ -1,4 +1,5 @@
 -- Yearly Inventory Turnover Analysis
+
 CREATE TABLE yearly_turnover AS
 SELECT
     i.year AS inventory_year,
