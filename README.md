@@ -4,3 +4,13 @@ As third-party consultants, our objective is to provide actionable recommendatio
 
 To uphold confidentiality, customer names have been anonymized and replaced with fictional aeronautical companies. Additionally, the dataset itself will not be uploaded. Findings will instead comprise SQL scripts, results tables, and Power BI charts presenting aggregated data to deliver a clear and concise summary of the analyses conducted.
 
+
+
+Data Wrangling: MySQL Workbench
+- Added relevant columns to enhance analysis.
+- Conducted exploratory data analysis to uncover insights.
+- Performed additional performance checks to ensure data integrity.
+
+Data Visualization: Power BI
+- Established an ODBC connection to MySQL Workbench.
+- Visualized aggregated tables derived from SQL analyses to maintain Power BI's performance and avoid overloading visuals.
