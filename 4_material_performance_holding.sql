@@ -2,15 +2,14 @@
 
 CREATE TABLE material_performance_holding AS
 SELECT
-    inventory.year AS inventory_year,
-    inventory.material AS inventory_material,
-    ROUND(SUM(transactions_sales.revenue), 2) AS total_revenue,
-    ROUND(SUM(transactions_sales.profit_or_loss), 2) AS total_transaction_profit,
-    ROUND(SUM(inventory.value_of_inv_onhand), 2) AS total_holding_cost,
-    ROUND(SUM(inventory.value_of_inv_onhand) * 100.0 / NULLIF(SUM(transactions_sales.revenue), 0), 2) AS holding_cost_to_revenue_ratio
-FROM
-    inventory
-LEFT JOIN transactions_sales
-    ON inventory.material = transactions_sales.material
-GROUP BY inventory.year, inventory.material
-ORDER BY inventory.year, holding_cost_to_revenue_ratio DESC;
+    i.year AS inventory_year,
+    i.material AS inventory_material,
+    ROUND(SUM(t.revenue), 2) AS total_revenue,
+    ROUND(SUM(t.profit_or_loss), 2) AS total_transaction_profit,
+    ROUND(SUM(i.value_of_inv_onhand), 2) AS total_holding_cost,
+    ROUND(SUM(i.value_of_inv_onhand) * 100.0 / NULLIF(SUM(t.revenue), 0), 2) AS holding_cost_to_revenue_ratio
+FROM inventory i
+LEFT JOIN transactions_sales t
+ON i.material = t.material
+GROUP BY i.year, i.material
+ORDER BY i.year, holding_cost_to_revenue_ratio DESC;
