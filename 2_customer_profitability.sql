@@ -1,4 +1,5 @@
 -- Customer Profitability Analysis
+
 CREATE TABLE customer_profitability AS
 SELECT
     t.customer AS customer_name,
