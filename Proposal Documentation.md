@@ -17,4 +17,4 @@ To uphold confidentiality, customer names have been anonymized and replaced with
 1. Data (transaction history and inventory list) were provided by client via CSV
 2. Flat files were imported to MySQL Workbench for feature engineering and exploratory data analysis
 3. Analyses were done and generated as tables
-4. Only aggregated tables were fed to Power BI, maintaining dashboard performance and avoid overloading visuals
+4. Only aggregated tables were fed to Power BI via MySQL ODBC API, maintaining dashboard performance and avoid overloading visuals
