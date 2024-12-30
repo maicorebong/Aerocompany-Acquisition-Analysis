@@ -13,6 +13,7 @@ To uphold confidentiality, customer names have been anonymized and replaced with
 
 ## Data Architecture
 <img width="809" alt="workflow" src="https://github.com/user-attachments/assets/f6da143b-8e60-42f8-bddf-a1e8dcde4755" />
+
 1. Data (transaction history and inventory list) were provided by client via CSV
 2. Flat files were imported to MySQL Workbench for feature engineering and exploratory data analysis
 3. Analyses were done and generated as tables
