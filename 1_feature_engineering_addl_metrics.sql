@@ -40,11 +40,11 @@ SET
 UPDATE inventory
 SET to_make =
 	CASE WHEN last_sale_last_order = 'Order' THEN 
-        CASE WHEN last_sale_order_req_qty = 0 THEN 0
-            WHEN last_sale_order_req_qty - inv_oh > 0 THEN last_sale_order_req_qty - inv_oh
-            ELSE inv_oh - last_sale_order_req_qty
-        END
-    ELSE 0
+        	CASE WHEN last_sale_order_req_qty = 0 THEN 0
+            	WHEN last_sale_order_req_qty - inv_oh > 0 THEN last_sale_order_req_qty - inv_oh
+            	ELSE inv_oh - last_sale_order_req_qty
+        	END
+    	ELSE 0
 	END;
 
 -- 4) Populate 'inventory_status' based on inventory and order activity:
@@ -52,20 +52,20 @@ SET to_make =
 UPDATE inventory
 SET inventory_status =
 	CASE WHEN inv_oh = 0 THEN 'No Stock'
-		WHEN inv_oh > 0 THEN 
-			CASE WHEN last_sale_last_order = 'Sale' THEN 'No Demand'
-				WHEN last_sale_last_order = 'NO DEMAND' THEN 'No Demand'
-				WHEN last_sale_last_order = 'Order' THEN 
-					CASE
-						WHEN last_sale_order_req_qty - inv_oh >= 0 THEN 'Insufficient Stock'
-						ELSE 'Demand'
-					END
+	WHEN inv_oh > 0 THEN 
+		CASE WHEN last_sale_last_order = 'Sale' THEN 'No Demand'
+		WHEN last_sale_last_order = 'NO DEMAND' THEN 'No Demand'
+		WHEN last_sale_last_order = 'Order' THEN 
+			CASE
+			WHEN last_sale_order_req_qty - inv_oh >= 0 THEN 'Insufficient Stock'
+			ELSE 'Demand'
 			END
+		END
 	END;
 
 -- 5) Populate 'no_demand_value' as 'std_unit_cost * inv_oh' if 'inventory_status' is 'No Demand'
 UPDATE inventory
 SET no_demand_value =
 	CASE WHEN inventory_status = 'No Demand' THEN std_unit_cost * inv_oh
-    ELSE 0
-END;
+    	ELSE 0
+	END;
