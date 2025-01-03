@@ -12,4 +12,4 @@ FROM transactions_sales t
 LEFT JOIN inventory i
 ON t.customer = i.customer_name
 GROUP BY t.customer
-ORDER BY profit_margin_percentage DESC;
+ORDER BY total_revenue DESC;
