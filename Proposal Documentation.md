@@ -170,41 +170,48 @@ Although Aluminum Alloy is a key revenue driver, many of the Top 10 No Demand pa
 ### 6. Which materials should we prioritize?
 ````sql
 CREATE TABLE abc_analysis AS
-WITH InventoryValue AS (
-    SELECT
-        inventory.material AS material,
-        ROUND(SUM(inventory.value_of_inv_onhand), 2) AS total_inventory_value
-    FROM 
-        inventory
-    GROUP BY 
-        inventory.material
-),
-CumulativeInventory AS (
+WITH MaterialRevenue AS (
     SELECT
         material,
-        total_inventory_value,
-        SUM(total_inventory_value) OVER (ORDER BY total_inventory_value DESC) AS cumulative_value,
-        SUM(total_inventory_value) OVER () AS grand_total_value
+        ROUND(SUM(revenue), 2) AS total_revenue
     FROM 
-        InventoryValue
+        transactions_sales
+    GROUP BY 
+        material
+),
+CumulativeRevenue AS (
+    SELECT
+        material,
+        total_revenue,
+        SUM(total_revenue) OVER (ORDER BY total_revenue DESC) AS cumulative_revenue,
+        SUM(total_revenue) OVER () AS grand_total_revenue
+    FROM 
+        MaterialRevenue
 )
 SELECT
     material,
-    total_inventory_value,
-    ROUND((cumulative_value / grand_total_value) * 100, 2) AS cumulative_percentage,
+    total_revenue,
+    ROUND((cumulative_revenue / grand_total_revenue) * 100, 2) AS cumulative_percentage,
     CASE 
-        WHEN (cumulative_value / grand_total_value) * 100 <= 80 THEN 'A'
-        WHEN (cumulative_value / grand_total_value) * 100 <= 95 THEN 'B'
+        WHEN (cumulative_revenue / grand_total_revenue) * 100 <= 80 THEN 'A'
+        WHEN (cumulative_revenue / grand_total_revenue) * 100 <= 95 THEN 'B'
         ELSE 'C'
     END AS abc_category
 FROM 
-    CumulativeInventory
+    CumulativeRevenue
 ORDER BY 
-    abc_category, total_inventory_value DESC;
+    abc_category, total_revenue DESC;
 ````
 
 **Answer:**
 
-![image](https://github.com/user-attachments/assets/f120cbd0-ed9d-4d61-9232-ada2985a7920)
-![image](https://github.com/user-attachments/assets/1d903a46-cf45-4e99-bf9a-cef33610501d)
+![image](https://github.com/user-attachments/assets/9828f081-869e-434f-83b2-c6a4809abc75)
 
+![image](https://github.com/user-attachments/assets/5999d288-7edf-40d2-889f-eaa3cc1e35fe)
+
+Aluminum Alloy is a major revenue driver, but Hard Steel and Stainless Steel in Category B also play a significant role, with room to grow. Category C materials contribute less to revenue but offer opportunities for cost savings. Interestingly, Category B is almost as strong as Category A in terms of revenue, showing a well-balanced portfolio that reduces dependence on Aluminum Alloy and lowers risk from market fluctuations.
+
+**Recommendation:**
+- Focus on investing in and optimizing operations around Aluminum Alloy to maintain its strong performance.
+- Look into expanding the market for Hard Steel and Stainless Steel to unlock growth potential.
+- For Category C materials, tightening cost controls could help improve overall profitability.
