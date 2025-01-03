@@ -7,6 +7,12 @@ The primary focus is on developing and executing an immediate supply chain turna
 
 To uphold confidentiality, customer names have been anonymized and replaced with fictional aeronautical companies. Additionally, the dataset itself will not be uploaded. Findings will instead comprise SQL scripts, results tables, and Power BI charts presenting aggregated data to deliver a clear and concise summary of the analyses conducted.
 
+## Proposed Consulting Strategy
+- Create an analysis to assess current fiscal and inventory health
+- Strategy should consider impact on customers, suppliers, and stakeholders
+- Focus on quick wins to generate cash flow and stabilize supply chain
+- Position CGP to better market themselves for acquisition and long-term success
+
 ## Technologies
 - Database and GUI: MySQL Workbench
 - Data Visualization: Power BI
@@ -20,6 +26,7 @@ To uphold confidentiality, customer names have been anonymized and replaced with
 4. Only aggregated tables were fed to Power BI via MySQL ODBC API, maintaining dashboard performance and avoid overloading visuals
 
 ## 📌 Analysis
+### 📊 Link to published [Power BI dashboard](https://app.powerbi.com/view?r=eyJrIjoiNDJiNTI3ZjgtN2FlZC00OGE1LWFjMmItMTNmMzY5ODRkNWFkIiwidCI6ImNmYWQ4MGQzLTZiYTAtNDU4Ny1hMGUzLTE3Mzg1YzE0ZTZlNiIsImMiOjZ9) 
 
 ### 1. Who are our high-value customers?
 ````sql
@@ -46,6 +53,10 @@ ORDER BY total_revenue DESC;
 
 Eclipse Aerologics and Skyward Aeronautics are our top two customers, each contributing more than 45% of the company's revenue. Of the two, Eclipse Aerologics provides larger profit margins with lower holding costs for frequently ordered products.
 
+**Recommendation:**
+- Secure long-term contracts with Eclipse Aerologics and optimize production for frequently ordered products with low holding costs.
+- Promote higher-margin products with Skyward Aeronautics Relationship.
+
 
 ### 2. How does each material contribute to the total revenue percentage?
 ````sql
@@ -69,6 +80,8 @@ ORDER BY transaction_year, total_revenue DESC;
 
 Aluminum Alloy and Hard Steel are the top revenue drivers, but Hard Steel’s share has grown significantly from 32.67% in 2022 to 44.64% in 2024, while Aluminum Alloy’s contribution has declined. Meanwhile, materials like Titanium and Stainless Steel have shown minimal and consistent contributions. This trend highlights an increasing reliance on Hard Steel which creates room for strategic focus or diversification.
 
+**Recommendation:**
+- With increasing reliance on Hard Steel, explore strategic focus or diversification to increase sales opportunities.
 
 ### 3. How do turnover rates for key materials impact operational efficiency?
 ````sql
@@ -97,6 +110,8 @@ ORDER BY i.year, turnover_ratio DESC;
 
 Revenue has grown from $701M in 2022 to $1.9B in 2024, driven by Aluminum Alloy and Hard Steel. Holding costs and the % HC-to-Revenue ratio have increased, while inventory turnover has declined from 33.85% to 13.60%, indicating slower inventory movement.
 
+**Recommendation:**
+- Streamline storage and carrying processes to reduce holding costs, including exploring efficient warehousing.
 
 ### 4. How sufficient was the inventory in meeting order demands?
 ````sql
@@ -122,8 +137,11 @@ ORDER BY total_to_make DESC;
 
 ![image](https://github.com/user-attachments/assets/8c88955c-8271-41f1-a97f-798e569e1128)
 
-20% of orders can be fulfilled immediately due to sufficient safety stock, while 80% remain unfulfilled due to insufficient inventory, highlighting the need for improved stock planning and replenishment. Maintaining adequate inventory should be balanced with managing holding costs for a swift replenishment process.
+20% of orders can be fulfilled immediately due to sufficient safety stock, while 80% remain unfulfilled due to insufficient inventory, highlighting the need for improved stock planning and replenishment. 
 
+**Recommendation:**
+- Maintaining adequate inventory should be balanced with managing holding costs for a swift replenishment process.
+- Improve forecasting and stock planning to enable swift replenishment.
 
 ### 5. Which items in our inventory are not generating purchase demand?
 ````sql
@@ -145,6 +163,9 @@ WHERE inventory_status = 'No Demand';
 
 Although Aluminum Alloy is a key revenue driver, many of the Top 10 No Demand parts, including AT-2127 and AT-2125, come from this class, resulting in holding costs.
 
+**Recommendation:**
+- Strategically liquidate no-demand inventory by targeting customers with obsolete aircraft needing these parts, thus creating new demand.
+- Improve forecasting to minimize no-demand items and reduce holding costs.
 
 ### 6. Which materials should we prioritize?
 ````sql
