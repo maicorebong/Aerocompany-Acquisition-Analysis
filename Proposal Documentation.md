@@ -12,6 +12,8 @@ To uphold confidentiality, customer names have been anonymized and replaced with
 - Strategy should consider impact on customers, suppliers, and stakeholders
 - Focus on quick wins to generate cash flow and stabilize supply chain
 - Position CGP to better market themselves for acquisition and long-term success
+### 📊 Link to published [Power BI dashboard](https://app.powerbi.com/view?r=eyJrIjoiNDJiNTI3ZjgtN2FlZC00OGE1LWFjMmItMTNmMzY5ODRkNWFkIiwidCI6ImNmYWQ4MGQzLTZiYTAtNDU4Ny1hMGUzLTE3Mzg1YzE0ZTZlNiIsImMiOjZ9) 
+
 
 ## Technologies
 - Database and GUI: MySQL Workbench
