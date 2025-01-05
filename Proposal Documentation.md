@@ -56,7 +56,7 @@ ORDER BY total_revenue DESC;
 Eclipse Aerologics and Skyward Aeronautics are our top two customers, each contributing more than 45% of the company's revenue. Of the two, Eclipse Aerologics provides larger profit margins with lower holding costs for frequently ordered products.
 
 **Recommendation:**
-- Secure long-term contracts with Eclipse Aerologics and optimize production for frequently ordered products with low holding costs.
+- Secure long-term contracts with Eclipse Aerologics to make the company more stable and attractive to buyers. Optimize production for frequently ordered products with low holding costs.
 - Promote higher-margin products with Skyward Aeronautics Relationship.
 
 
